@@ -1,0 +1,1 @@
+CMD 跑 pip install yfinance beautifulsoup4
