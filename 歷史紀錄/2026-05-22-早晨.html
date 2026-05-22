@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晨間簡報 · 2026-05-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 糖果色底 */
+    --bg-base: #fef9f3;
+    --bg-cream: #fff7ea;
+    --bg-mint: #e8f5ee;
+    --bg-pink: #fce7ee;
+    --bg-blue: #e3f0fa;
+    --bg-lavender: #f0e9f7;
+    --bg-peach: #fde6d6;
+
+    /* 對應深色字 */
+    --ink-deep: #3d2f24;
+    --ink-soft: #6b5a4d;
+    --ink-fade: #a89684;
+
+    /* 強調色（深色版） */
+    --accent-pink: #c4527e;
+    --accent-mint: #2d8765;
+    --accent-blue: #3470a8;
+    --accent-amber: #c08840;
+    --accent-coral: #d96b4c;
+    --accent-lavender: #7a5ba0;
+
+    /* 功能色 */
+    --up: #d4633e;       /* 紅(漲) */
+    --down: #4a8c5e;     /* 綠(跌) */
+    --line: #ebe0d0;
+    --line-soft: #f2e9dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', system-ui, sans-serif;
+    background: var(--bg-base);
+    background-image:
+      radial-gradient(at 15% 10%, var(--bg-pink) 0%, transparent 35%),
+      radial-gradient(at 85% 20%, var(--bg-mint) 0%, transparent 40%),
+      radial-gradient(at 50% 90%, var(--bg-blue) 0%, transparent 35%);
+    background-attachment: fixed;
+    color: var(--ink-deep);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 32px 20px 60px;
+    font-weight: 400;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ============ 頂部問候列 ============ */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: 2px;
+  }
+
+  .brand::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-mint);
+    box-shadow: 0 0 0 4px rgba(45, 135, 101, 0.15);
+  }
+
+  /* 股市膠囊 */
+  .stock-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .stock-pill {
+    background: var(--bg-cream);
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .stock-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(61, 47, 36, 0.08);
+  }
+
+  .stock-pill .name { font-weight: 500; color: var(--ink-deep); }
+  .stock-pill .change.up { color: var(--up); }
+  .stock-pill .change.down { color: var(--down); }
+
+  /* ============ 主標頭 ============ */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .hero-greeting {
+    background: var(--bg-cream);
+    border-radius: 24px;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-greeting::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--bg-pink) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .greeting-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-mint);
+    color: var(--accent-mint);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .greeting-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-mint);
+  }
+
+  .greeting-main {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .greeting-sun {
+    display: inline-block;
+    margin-left: 12px;
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .greeting-date {
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .greeting-weather-text {
+    color: var(--ink-fade);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .meta-chip {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* 天氣卡 */
+  .weather-card {
+    background: var(--bg-blue);
+    border-radius: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+  }
+
+  .weather-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .weather-temp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .weather-temp .temp-low {
+    color: var(--accent-blue);
+  }
+
+  .weather-temp .temp-sep {
+    color: var(--ink-fade);
+    font-size: 32px;
+    font-weight: 300;
+  }
+
+  .weather-temp .temp-high {
+    color: var(--up);
+  }
+
+  .weather-temp .unit {
+    font-size: 22px;
+    color: var(--ink-fade);
+    margin-left: 2px;
+  }
+
+  .weather-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .weather-meta {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .weather-meta-chip {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  .weather-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-fade);
+  }
+
+  /* meta-chip 內的低/高溫色 */
+  .meta-chip .temp-low { color: var(--accent-blue); font-weight: 500; }
+  .meta-chip .temp-high { color: var(--up); font-weight: 500; }
+
+  /* ============ 區塊標題 ============ */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-deep);
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-pink);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .section-stats {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-fade);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ============ 市場快訊 ============ */
+  .market-section { margin-bottom: 36px; }
+
+  .market-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .market-tab {
+    background: var(--bg-cream);
+    border: 1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-weight: 500;
+  }
+
+  .market-tab.active {
+    background: var(--accent-pink);
+    color: white;
+    border-color: var(--accent-pink);
+  }
+
+  .market-tab:hover:not(.active) {
+    background: var(--bg-pink);
+    color: var(--accent-pink);
+  }
+
+  .market-panel { display: none; }
+  .market-panel.active { display: block; }
+
+  .stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .stock-card {
+    background: white;
+    border: 1px solid var(--line-soft);
+    border-radius: 16px;
+    padding: 16px 18px;
+    color: inherit;
+    transition: all 0.25s ease;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .stock-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(61, 47, 36, 0.08);
+    border-color: var(--line);
+  }
+
+  .stock-card-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-fade);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .stock-card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    margin-bottom: 10px;
+  }
+
+  .stock-card-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stock-card-change {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stock-card-change.up { color: var(--up); }
+  .stock-card-change.down { color: var(--down); }
+  .stock-card-change.flat { color: var(--ink-fade); }
+
+  /* 外部連結圖示(右上角) */
+  .stock-card-link {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 14px;
+    color: var(--ink-fade);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    text-decoration: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+  }
+
+  .stock-card-link:hover {
+    background: var(--bg-cream);
+    color: var(--accent-blue);
+  }
+
+  .stock-card:hover .stock-card-link { opacity: 1; }
+
+  /* 看細部展開按鈕 */
+  .stock-card-toggle {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line-soft);
+    font-size: 11px;
+    color: var(--ink-fade);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: color 0.25s ease;
+  }
+
+  .stock-card-toggle:hover {
+    color: var(--accent-pink);
+  }
+
+  .stock-card-toggle .arrow {
+    transition: transform 0.3s ease;
+    font-size: 10px;
+  }
+
+  .stock-card.expanded .stock-card-toggle .arrow {
+    transform: rotate(180deg);
+  }
+
+  /* 細部展開區 */
+  .stock-card-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.3s ease;
+    margin-top: 0;
+  }
+
+  .stock-card.expanded .stock-card-detail {
+    max-height: 300px;
+    margin-top: 10px;
+  }
+
+  .stock-range {
+    background: var(--bg-cream);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+  }
+
+  .stock-range:last-child { margin-bottom: 0; }
+
+  .stock-range-label {
+    font-size: 10px;
+    color: var(--ink-fade);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .stock-range-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 3px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stock-range-row:last-child { margin-bottom: 0; }
+
+  .stock-range-row .tag {
+    color: var(--ink-soft);
+  }
+
+  .stock-range-row .tag.high { color: var(--up); }
+  .stock-range-row .tag.low { color: var(--down); }
+
+  .stock-range-row .val {
+    color: var(--ink-deep);
+    font-weight: 500;
+  }
+
+  .stock-range-row .date {
+    color: var(--ink-fade);
+    font-size: 10px;
+    margin-left: 6px;
+  }
+
+  /* ============ 任務區塊 ============ */
+  .task-section {
+    background: white;
+    border-radius: 24px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    border: 1px solid var(--line-soft);
+  }
+
+  .progress-wrap {
+    margin: 8px 0 24px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .progress-info .percent {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--accent-mint);
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--bg-cream);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--bg-pink), var(--accent-pink));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .task-list { list-style: none; }
+
+  .task-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 6px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .task-item:hover {
+    background: var(--bg-cream);
+  }
+
+  .task-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .task-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 10px;
+    height: 10px;
+    background: var(--accent-mint);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .task-item.completed .task-checkbox {
+    border-color: var(--accent-mint);
+    background: var(--bg-mint);
+  }
+
+  .task-item.completed .task-checkbox::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .task-content { flex: 1; }
+
+  .task-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    transition: all 0.3s ease;
+  }
+
+  .task-desc {
+    font-size: 12px;
+    color: var(--ink-fade);
+    margin-top: 2px;
+  }
+
+  .task-item.completed .task-title {
+    color: var(--ink-fade);
+    text-decoration: line-through;
+  }
+
+  .task-priority {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .task-priority.high {
+    background: var(--bg-pink);
+    color: var(--accent-pink);
+  }
+
+  .task-priority.mid {
+    background: var(--bg-peach);
+    color: var(--accent-amber);
+  }
+
+  .task-priority.low {
+    background: var(--bg-mint);
+    color: var(--accent-mint);
+  }
+
+  /* 刪除按鈕 */
+  .task-delete, .stock-delete {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--ink-fade);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.25s ease;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .task-item:hover .task-delete,
+  .stock-card:hover .stock-delete {
+    opacity: 1;
+  }
+
+  .task-delete:hover, .stock-delete:hover {
+    background: var(--bg-pink);
+    color: var(--accent-pink);
+  }
+
+  /* 股票卡的刪除按鈕(絕對定位) */
+  .stock-delete {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  /* ============ 新增按鈕(通用) ============ */
+  .add-btn {
+    width: 100%;
+    background: transparent;
+    border: 2px dashed var(--line);
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 8px;
+    color: var(--ink-fade);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .add-btn:hover {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+    background: var(--bg-pink);
+  }
+
+  /* 股票卡片版的 + (做成卡片大小) */
+  .stock-add-card {
+    background: transparent;
+    border: 2px dashed var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: var(--ink-fade);
+    font-family: inherit;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 180px;
+  }
+
+  .stock-add-card:hover {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+    background: var(--bg-pink);
+  }
+
+  .stock-add-card .plus-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  /* ============ 新增表單(Modal) ============ */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(61, 47, 36, 0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+
+  .modal-backdrop.active {
+    display: flex;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(61, 47, 36, 0.2);
+  }
+
+  .modal-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    margin-bottom: 20px;
+  }
+
+  .modal-field {
+    margin-bottom: 14px;
+  }
+
+  .modal-label {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .modal-input, .modal-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink-deep);
+    background: var(--bg-cream);
+    transition: border-color 0.2s ease;
+  }
+
+  .modal-input:focus, .modal-select:focus {
+    outline: none;
+    border-color: var(--accent-pink);
+    background: white;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .modal-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    border: none;
+  }
+
+  .modal-btn-cancel {
+    background: var(--bg-cream);
+    color: var(--ink-soft);
+  }
+
+  .modal-btn-confirm {
+    background: var(--accent-pink);
+    color: white;
+  }
+
+  .modal-btn-cancel:hover { background: var(--line); }
+  .modal-btn-confirm:hover { background: var(--accent-coral); }
+
+  /* ============ 歷史紀錄頁 ============ */
+  .history-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 12px 18px;
+    border-radius: 24px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink-deep);
+    box-shadow: 0 4px 12px rgba(61, 47, 36, 0.1);
+    transition: all 0.25s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .history-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(61, 47, 36, 0.15);
+  }
+
+  .history-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 440px;
+    height: 100vh;
+    background: var(--bg-base);
+    box-shadow: -8px 0 32px rgba(61, 47, 36, 0.15);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+    padding: 32px 28px;
+  }
+
+  .history-panel.active { right: 0; }
+
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .history-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink-deep);
+  }
+
+  .history-close {
+    background: var(--bg-cream);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    transition: all 0.2s ease;
+  }
+
+  .history-close:hover {
+    background: var(--bg-pink);
+    color: var(--accent-pink);
+  }
+
+  .history-stats {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--line-soft);
+  }
+
+  .history-stats-title {
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .history-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .history-stat {
+    text-align: center;
+  }
+
+  .history-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent-pink);
+    line-height: 1;
+  }
+
+  .history-stat-label {
+    font-size: 11px;
+    color: var(--ink-fade);
+    margin-top: 4px;
+  }
+
+  .history-list {
+    list-style: none;
+  }
+
+  .history-day {
+    background: white;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border: 1px solid var(--line-soft);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .history-day:hover {
+    border-color: var(--accent-pink);
+    transform: translateX(-2px);
+  }
+
+  .history-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .history-day-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-deep);
+    font-weight: 500;
+  }
+
+  .history-day-weekday {
+    font-size: 11px;
+    color: var(--ink-fade);
+    margin-left: 6px;
+  }
+
+  .history-day-rate {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+
+  .history-day-rate.high {
+    background: var(--bg-mint);
+    color: var(--accent-mint);
+  }
+
+  .history-day-rate.mid {
+    background: var(--bg-peach);
+    color: var(--accent-amber);
+  }
+
+  .history-day-rate.low {
+    background: var(--bg-pink);
+    color: var(--accent-pink);
+  }
+
+  .history-day-bar {
+    height: 4px;
+    background: var(--bg-cream);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+
+  .history-day-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-mint));
+    border-radius: 2px;
+  }
+
+  .history-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-fade);
+    font-style: italic;
+  }
+
+  /* ============ 喝水 & 計時器 雙欄 ============ */
+  .duo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .water-card, .timer-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px 28px;
+    border: 1px solid var(--line-soft);
+  }
+
+  .water-card { background: var(--bg-blue); }
+
+  .card-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .water-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+  }
+
+  .water-value .unit {
+    font-size: 14px;
+    color: var(--ink-fade);
+    margin-left: 4px;
+  }
+
+  .water-progress {
+    height: 8px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0 16px;
+  }
+
+  .water-fill {
+    height: 100%;
+    background: var(--accent-blue);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+    width: 0%;
+  }
+
+  .water-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .water-btn {
+    flex: 1;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(52, 112, 168, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--accent-blue);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-weight: 500;
+  }
+
+  .water-btn:hover {
+    background: var(--accent-blue);
+    color: white;
+  }
+
+  /* 計時器 */
+  .timer-card { background: var(--bg-lavender); }
+
+  .timer-card .card-label { color: var(--accent-lavender); }
+
+  .timer-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--accent-lavender);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timer-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .timer-btn {
+    flex: 1;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(122, 91, 160, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--accent-lavender);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-weight: 500;
+  }
+
+  .timer-btn:hover {
+    background: var(--accent-lavender);
+    color: white;
+  }
+
+  /* ============ 今日重點 ============ */
+  .priority-box {
+    background: var(--bg-pink);
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .priority-box::before {
+    content: '"';
+    position: absolute;
+    top: 0;
+    left: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    color: var(--accent-pink);
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .priority-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent-pink);
+    margin-left: 32px;
+    margin-bottom: 8px;
+  }
+
+  .priority-text {
+    margin-left: 32px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    min-height: 50px;
+    outline: none;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(196, 82, 126, 0.3);
+  }
+
+  .priority-text:empty::before {
+    content: '寫下今日最重要的 1-3 件事⋯⋯';
+    color: var(--ink-fade);
+    font-style: italic;
+  }
+
+  /* ============ 新聞區 ============ */
+  .news-section {
+    background: white;
+    border-radius: 24px;
+    padding: 28px 32px;
+    border: 1px solid var(--line-soft);
+  }
+
+  .news-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .news-filter {
+    background: var(--bg-cream);
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .news-filter.active {
+    background: var(--accent-lavender);
+    color: white;
+    border-color: var(--accent-lavender);
+  }
+
+  .news-filter:hover:not(.active) {
+    background: var(--bg-lavender);
+    color: var(--accent-lavender);
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .news-card {
+    background: var(--bg-cream);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .news-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--line);
+  }
+
+  .news-category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .news-category-tag.tech { background: var(--bg-blue); color: var(--accent-blue); }
+  .news-category-tag.finance { background: var(--bg-peach); color: var(--accent-amber); }
+  .news-category-tag.geopolitics { background: var(--bg-lavender); color: var(--accent-lavender); }
+  .news-category-tag.policy { background: var(--bg-mint); color: var(--accent-mint); }
+  .news-category-tag.industry { background: var(--bg-pink); color: var(--accent-pink); }
+
+  .news-card-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-deep);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .news-card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .news-card.expanded .news-card-body {
+    max-height: 800px;
+  }
+
+  .news-card-summary {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 12px 0;
+  }
+
+  .news-card-importance {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--accent-pink);
+    margin-bottom: 12px;
+  }
+
+  .news-card-importance::before {
+    content: '為何重要 · ';
+    font-weight: 500;
+    color: var(--accent-pink);
+  }
+
+  .news-card-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .news-card-source {
+    font-size: 12px;
+    padding: 6px 14px;
+    background: white;
+    border: 1px solid var(--accent-blue);
+    border-radius: 16px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .news-card-source:hover {
+    background: var(--accent-blue);
+    color: white;
+    transform: translateX(2px);
+  }
+
+  .news-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--ink-fade);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .news-card-expand {
+    color: var(--accent-pink);
+    cursor: pointer;
+  }
+
+  /* ============ 頁尾 ============ */
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 24px;
+    color: var(--ink-fade);
+  }
+
+  .footer-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--accent-pink);
+    margin-bottom: 12px;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  /* ============ 響應式 ============ */
+  @media (max-width: 768px) {
+    body { padding: 16px; }
+    .hero { grid-template-columns: 1fr; }
+    .greeting-main { font-size: 32px; }
+    .duo-grid { grid-template-columns: 1fr; }
+    .stock-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-greeting { padding: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .stock-grid { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
+    .greeting-main { font-size: 28px; }
+    .weather-temp { font-size: 40px; }
+    .weather-temp .temp-sep { font-size: 26px; }
+  }
+
+  /* 列印 */
+  @media print {
+    body { background: white; }
+    .water-buttons, .timer-buttons, .market-tabs, .news-filters { display: none; }
+    .news-card-body { max-height: none !important; }
+    .market-panel { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ 頂部問候列 ============ -->
+  <div class="top-bar">
+    <div class="brand">MORNING BRIEFING · 晨間簡報</div>
+    <div class="stock-pills" id="stock-pills-top">
+      
+      <a href="https://tw.stock.yahoo.com/quote/0050.TW" class="stock-pill" target="_blank">
+        <span class="name">0050</span><span class="change down">-0.45%</span>
+      </a>
+      <a href="https://tw.stock.yahoo.com/quote/2330.TW" class="stock-pill" target="_blank">
+        <span class="name">台積電</span><span class="change up">+1.20%</span>
+      </a>
+      <a href="https://tw.stock.yahoo.com/quote/2454.TW" class="stock-pill" target="_blank">
+        <span class="name">聯發科</span><span class="change up">+0.85%</span>
+      </a>
+    
+    </div>
+  </div>
+
+  <!-- ============ 主標頭 ============ -->
+  <section class="hero">
+
+    <div class="hero-greeting">
+      <div class="greeting-label">MORNING BRIEFING</div>
+      <h1 class="greeting-main">早安,小魚<span class="greeting-sun">☀️</span></h1>
+      <div class="greeting-date">2026年5月22日,星期五</div>
+      <div class="greeting-weather-text">晴時多雲,午後有局部短暫雨</div>
+      <div class="meta-chips">
+        <div class="meta-chip">📋 6 項任務</div>
+        <div class="meta-chip">📰 14 則新聞</div>
+        <div class="meta-chip">🌤️ <span class="temp-low">22°</span>-<span class="temp-high">30°</span>C</div>
+        <div class="meta-chip">💧 30% 雨機率</div>
+      </div>
+    </div>
+
+    <div class="weather-card">
+      <div class="weather-icon">⛅</div>
+      <div class="weather-temp">
+        <span class="temp-low">22°</span>
+        <span class="temp-sep">-</span>
+        <span class="temp-high">30°</span>
+        <span class="unit">C</span>
+      </div>
+      <div class="weather-desc">晴時多雲</div>
+      <div class="weather-meta">
+        <span class="weather-meta-chip">💨 4 m/s 東南風</span>
+        <span class="weather-meta-chip">💧 30%</span>
+      </div>
+      <div class="weather-location">桃園市,中壢區</div>
+    </div>
+
+  </section>
+
+  <!-- ============ 市場快訊 ============ -->
+  <section class="market-section">
+    <div class="section-title">
+      <span class="section-icon" style="background: var(--bg-mint);">📊</span>
+      市場快訊
+      <span class="section-stats">收盤價 · 點擊看詳情</span>
+    </div>
+
+    <div class="market-tabs">
+      <button class="market-tab active" data-tab="etf">ETF (5)</button>
+      <button class="market-tab" data-tab="stock">公司股 (11)</button>
+    </div>
+
+    <div class="market-panel active" id="panel-etf">
+      <div class="stock-grid" id="grid-etf">
+        
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/0050.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">0050</div>
+          <div class="stock-card-name">元大台灣50</div>
+          <div class="stock-card-price">$202.50</div>
+          <div class="stock-card-change down">▼ -0.45%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$215.80</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$155.30</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$215.80</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$23.45</span><span class="date">2008/11/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/0056.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">0056</div>
+          <div class="stock-card-name">元大高股息</div>
+          <div class="stock-card-price">$40.25</div>
+          <div class="stock-card-change up">▲ +0.30%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$42.80</span><span class="date">2026/03/20</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$32.15</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$42.80</span><span class="date">2026/03/20</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$15.30</span><span class="date">2008/11/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/00878.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">00878</div>
+          <div class="stock-card-name">國泰永續高股息</div>
+          <div class="stock-card-price">$23.80</div>
+          <div class="stock-card-change up">▲ +0.15%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$25.20</span><span class="date">2026/04/02</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$19.40</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$25.20</span><span class="date">2026/04/02</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$14.62</span><span class="date">2020/10/26</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/00919.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">00919</div>
+          <div class="stock-card-name">群益台灣精選高息</div>
+          <div class="stock-card-price">$24.65</div>
+          <div class="stock-card-change up">▲ +0.20%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$26.10</span><span class="date">2026/03/28</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$20.30</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$26.10</span><span class="date">2026/03/28</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$15.05</span><span class="date">2023/03/13</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/006208.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">006208</div>
+          <div class="stock-card-name">富邦台50</div>
+          <div class="stock-card-price">$116.90</div>
+          <div class="stock-card-change down">▼ -0.40%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$124.50</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$88.70</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$124.50</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$28.93</span><span class="date">2012/06/25</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="stock-add-card" onclick="openStockModal('etf')">
+          <span class="plus-icon">+</span>
+          <span>新增 ETF</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="market-panel" id="panel-stock">
+      <div class="stock-grid" id="grid-stock">
+        
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2330.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2330</div>
+          <div class="stock-card-name">台積電</div>
+          <div class="stock-card-price">$1,180</div>
+          <div class="stock-card-change up">▲ +1.20%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$1,265</span><span class="date">2026/05/15</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$780</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$1,265</span><span class="date">2026/05/15</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$40.6</span><span class="date">2009/01/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2303.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2303</div>
+          <div class="stock-card-name">聯電</div>
+          <div class="stock-card-price">$52.80</div>
+          <div class="stock-card-change down">▼ -0.30%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$62.50</span><span class="date">2026/03/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$38.20</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$72.00</span><span class="date">2000/02/17</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$6.27</span><span class="date">2001/09/26</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2409.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2409</div>
+          <div class="stock-card-name">友達</div>
+          <div class="stock-card-price">$17.45</div>
+          <div class="stock-card-change up">▲ +0.25%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$22.30</span><span class="date">2026/03/05</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$12.80</span><span class="date">2025/08/22</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$67.50</span><span class="date">2000/04/06</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$5.16</span><span class="date">2009/03/02</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/3189.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">3189</div>
+          <div class="stock-card-name">景碩</div>
+          <div class="stock-card-price">$136.50</div>
+          <div class="stock-card-change up">▲ +2.80%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$145.00</span><span class="date">2026/04/22</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$85.40</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$178.50</span><span class="date">2018/03/14</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$21.05</span><span class="date">2008/11/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2313.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2313</div>
+          <div class="stock-card-name">華通</div>
+          <div class="stock-card-price">$125.00</div>
+          <div class="stock-card-change down">▼ -0.85%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$152.00</span><span class="date">2026/03/18</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$78.30</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$152.00</span><span class="date">2026/03/18</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$6.16</span><span class="date">2008/11/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2353.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2353</div>
+          <div class="stock-card-name">宏碁</div>
+          <div class="stock-card-price">$38.20</div>
+          <div class="stock-card-change up">▲ +0.50%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$45.85</span><span class="date">2026/03/22</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$32.10</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$155.00</span><span class="date">2000/04/06</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$8.46</span><span class="date">2012/12/04</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2324.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2324</div>
+          <div class="stock-card-name">仁寶</div>
+          <div class="stock-card-price">$32.65</div>
+          <div class="stock-card-change down">▼ -0.15%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$38.20</span><span class="date">2026/04/02</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$28.40</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$74.50</span><span class="date">2007/10/29</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$7.60</span><span class="date">2001/09/26</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/8046.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">8046</div>
+          <div class="stock-card-name">南電</div>
+          <div class="stock-card-price">$178.50</div>
+          <div class="stock-card-change up">▲ +1.50%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$205.00</span><span class="date">2026/04/08</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$125.50</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$627.00</span><span class="date">2022/01/13</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$4.08</span><span class="date">2003/04/28</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/2454.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">2454</div>
+          <div class="stock-card-name">聯發科</div>
+          <div class="stock-card-price">$1,420</div>
+          <div class="stock-card-change up">▲ +0.85%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$1,550</span><span class="date">2026/04/15</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$985</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$1,550</span><span class="date">2026/04/15</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$177.5</span><span class="date">2008/11/21</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/3711.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">3711</div>
+          <div class="stock-card-name">日月光投控</div>
+          <div class="stock-card-price">$178.00</div>
+          <div class="stock-card-change up">▲ +0.65%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$195.50</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$128.50</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$195.50</span><span class="date">2026/04/12</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$60.7</span><span class="date">2018/12/26</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stock-card">
+          <a href="https://tw.stock.yahoo.com/quote/1785.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">1785</div>
+          <div class="stock-card-name">光洋科</div>
+          <div class="stock-card-price">$153.00</div>
+          <div class="stock-card-change up">▲ +2.68%</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$168.50</span><span class="date">2026/03/15</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$95.20</span><span class="date">2025/08/05</span></span>
+              </div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row">
+                <span class="tag high">▲ 高</span>
+                <span><span class="val">$232.00</span><span class="date">2010/12/30</span></span>
+              </div>
+              <div class="stock-range-row">
+                <span class="tag low">▼ 低</span>
+                <span><span class="val">$14.95</span><span class="date">2014/10/16</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="stock-add-card" onclick="openStockModal('stock')">
+          <span class="plus-icon">+</span>
+          <span>新增公司股</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 任務區 ============ -->
+  <section class="task-section">
+    <div class="section-title">
+      <span class="section-icon" style="background: var(--bg-mint);">✅</span>
+      今日任務
+      <span class="section-stats" id="task-count">0 / 6 完成</span>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>今日進度</span>
+        <span class="percent" id="progress-percent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <ul class="task-list" id="task-list">
+      <!-- 預設任務(可由 Cowork 在這裡填入,使用者也可動態增刪) -->
+      <li class="task-item" data-id="homework">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">課程作業</div>
+          <div class="task-desc">依當前進度填入待完成事項</div>
+        </div>
+        <span class="task-priority high">高優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+      <li class="task-item" data-id="reading">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">閱讀 30 分鐘</div>
+          <div class="task-desc">書籍或論文,涵養之事</div>
+        </div>
+        <span class="task-priority mid">中優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+      <li class="task-item" data-id="exercise">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">運動 30 分鐘</div>
+          <div class="task-desc">可使用下方計時器</div>
+        </div>
+        <span class="task-priority mid">中優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+      <li class="task-item" data-id="english">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">讀英文</div>
+          <div class="task-desc">podcast、文章、單字記憶,擇一即可</div>
+        </div>
+        <span class="task-priority low">低優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+      <li class="task-item" data-id="water">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">喝水 1500cc</div>
+          <div class="task-desc">早 500 / 午 500 / 晚 500</div>
+        </div>
+        <span class="task-priority low">低優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+      <li class="task-item" data-id="journal">
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">日記與反思</div>
+          <div class="task-desc">今日所學、所惑、所欲嘗試之事</div>
+        </div>
+        <span class="task-priority low">低優先</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      </li>
+    </ul>
+
+    <button class="add-btn" onclick="openTaskModal()">
+      <span>+</span> 新增任務
+    </button>
+  </section>
+
+  <!-- ============ 喝水 + 計時器 ============ -->
+  <div class="duo-grid">
+    <div class="water-card">
+      <div class="card-label">💧 飲水紀錄</div>
+      <div class="water-value"><span id="water-current">0</span><span class="unit">/ 1500 cc</span></div>
+      <div class="water-progress">
+        <div class="water-fill" id="water-fill"></div>
+      </div>
+      <div class="water-buttons">
+        <button class="water-btn" onclick="addWater(250)">+ 250</button>
+        <button class="water-btn" onclick="addWater(500)">+ 500</button>
+        <button class="water-btn" onclick="resetWater()">重置</button>
+      </div>
+    </div>
+
+    <div class="timer-card">
+      <div class="card-label">⏱️ 運動倒數</div>
+      <div class="timer-display" id="timer-display">30:00</div>
+      <div class="timer-buttons">
+        <button class="timer-btn" id="timer-start" onclick="toggleTimer()">開始</button>
+        <button class="timer-btn" onclick="resetTimer()">重置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 今日重點 ============ -->
+  <div class="priority-box">
+    <div class="priority-label">Aujourd'hui · 今日所重</div>
+    <div class="priority-text" contenteditable="true" id="priority-text"></div>
+  </div>
+
+  <!-- ============ 新聞 ============ -->
+  <section class="news-section">
+    <div class="section-title">
+      <span class="section-icon" style="background: var(--bg-lavender);">📰</span>
+      時事縱覽
+      <span class="section-stats">點卡片展開詳情</span>
+    </div>
+
+    <div class="news-filters">
+      <button class="news-filter active" data-filter="all">全部</button>
+      <button class="news-filter" data-filter="tech">🤖 科技資訊</button>
+      <button class="news-filter" data-filter="finance">💰 商業財經</button>
+      <button class="news-filter" data-filter="geopolitics">🌍 國際政經</button>
+      <button class="news-filter" data-filter="policy">📜 政策法規</button>
+      <button class="news-filter" data-filter="industry">🚀 產業趨勢</button>
+    </div>
+
+    <div class="news-grid" id="news-grid">
+      
+      <article class="news-card" data-category="tech">
+        <div class="news-category-tag tech">🤖 科技資訊</div>
+        <h4 class="news-card-title">輝達 (NVIDIA) Blackwell Ultra 量產加速,台積電 CoWoS 產能再吃緊</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">輝達執行長黃仁勳於 Computex 2026 確認,Blackwell Ultra (B300) 系列已進入量產階段,單晶片運算效能較前代提升 1.5 倍。台積電 (TSMC) 的 CoWoS 先進封裝產能目前已被預訂至 2027 年第一季。</p>
+          <div class="news-card-importance">輝達生態系的擴張直接牽動台灣半導體供應鏈獲利結構,對資管領域而言,AI 基礎設施 (AI Infrastructure) 的供需動態是理解雲端服務定價模式的關鍵。</div>
+          <div class="news-card-sources">
+            <a href="https://money.udn.com/money/index" class="news-card-source" target="_blank">📄 經濟日報 · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-22</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="tech">
+        <div class="news-category-tag tech">🤖 科技資訊</div>
+        <h4 class="news-card-title">OpenAI 推出企業版 Agent Builder,跨入低代碼市場</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">OpenAI 於 5 月 21 日發表 Agent Builder Enterprise,主打讓企業使用者透過拖拉介面建立自訂 AI 代理 (AI Agent),直接挑戰微軟 Copilot Studio 與 Salesforce Agentforce。</p>
+          <div class="news-card-importance">低代碼 AI 工具的成熟意味著企業 IT 部門角色轉變,從「開發者」變為「平台治理者」,對資管畢業生的職涯路徑有結構性影響。</div>
+          <div class="news-card-sources">
+            <a href="https://techcrunch.com/" class="news-card-source" target="_blank">📄 TechCrunch · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-21</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="tech">
+        <div class="news-category-tag tech">🤖 科技資訊</div>
+        <h4 class="news-card-title">Google Gemini 3.0 開放開發者預覽,多模態能力大幅躍進</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">Google 宣布 Gemini 3.0 進入開發者預覽階段,新增即時影像理解、跨檔案上下文記憶等能力,context window 擴大到 200 萬 token。</p>
+          <div class="news-card-importance">雲端 AI 三巨頭(Google、AWS、Microsoft)競爭白熱化,企業選型成本結構正在快速重組,對資管的雲端策略課題影響深遠。</div>
+          <div class="news-card-sources">
+            <a href="https://www.theverge.com/" class="news-card-source" target="_blank">📄 The Verge · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-21</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="tech">
+        <div class="news-category-tag tech">🤖 科技資訊</div>
+        <h4 class="news-card-title">Anthropic Claude 5 模型發布,標榜「長任務代理人」</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">Anthropic 5 月 20 日推出 Claude 5 系列模型,主打能持續執行 8 小時以上的長任務,並可自主規劃工作流程。Cowork 桌面端用戶將自動升級。</p>
+          <div class="news-card-importance">長時間自主代理人 (Long-running Agent) 是 2026 年 AI 領域最受矚目的進展,可能徹底改變知識工作者的角色定位。</div>
+          <div class="news-card-sources">
+            <a href="https://www.anthropic.com/news" class="news-card-source" target="_blank">📄 Anthropic Blog · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-20</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="tech">
+        <div class="news-category-tag tech">🤖 科技資訊</div>
+        <h4 class="news-card-title">台灣資安公司趨勢科技推出 AI 紅隊測試服務</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">趨勢科技 (Trend Micro) 推出針對企業生成式 AI 系統的紅隊 (Red Team) 測試服務,可模擬 prompt injection、jailbreak 等攻擊手法。</p>
+          <div class="news-card-importance">AI 安全 (AI Security) 成為企業導入 AI 的必要環節,對資管專業是新興職涯方向。</div>
+          <div class="news-card-sources">
+            <a href="https://www.ithome.com.tw/" class="news-card-source" target="_blank">📄 iThome · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-20</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="finance">
+        <div class="news-category-tag finance">💰 商業財經</div>
+        <h4 class="news-card-title">台股加權指數突破 41,000 點,AI 供應鏈題材續強</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">台股 5 月 21 日上午開盤後即衝高至 41,377 點,單日漲幅 3.39%。市場分析認為,推升動能來自四大雲端服務供應商 (CSP) 上修 2026 年資本支出至 6,500 億美元。</p>
+          <div class="news-card-importance">台股結構性上漲反映全球 AI 基礎設施投資週期,但泡沫化討論已浮現,對研究生投資決策需保持風險意識。</div>
+          <div class="news-card-sources">
+            <a href="https://news.cnyes.com/" class="news-card-source" target="_blank">📄 鉅亨網 · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-21</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="finance">
+        <div class="news-category-tag finance">💰 商業財經</div>
+        <h4 class="news-card-title">台積電 4 月營收年增 48%,改寫單月歷史新高</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">台積電 (2330) 公告 4 月營收達 3,420 億元,年增 48.2%,主要受惠於 3 奈米與先進封裝需求。法人預估 Q2 毛利率將突破 55%。</p>
+          <div class="news-card-importance">台積電營收動能直接影響台股權值表現,亦是判斷全球半導體景氣的關鍵指標。</div>
+          <div class="news-card-sources">
+            <a href="https://ctee.com.tw/" class="news-card-source" target="_blank">📄 工商時報 · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-10</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="finance">
+        <div class="news-category-tag finance">💰 商業財經</div>
+        <h4 class="news-card-title">聯發科發表 Dimensity 9500 旗艦晶片,首度導入 NPU 加速器</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">聯發科 (2454) 推出新一代 Dimensity 9500 晶片,主打邊緣 AI 運算能力,內建專屬 NPU 加速器,效能較前代提升 70%。</p>
+          <div class="news-card-importance">邊緣 AI (Edge AI) 是手機、車載、IoT 領域的下一個戰場,聯發科切入此市場將重塑競爭格局。</div>
+          <div class="news-card-sources">
+            <a href="https://www.digitimes.com.tw/" class="news-card-source" target="_blank">📄 DIGITIMES · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-19</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="geopolitics">
+        <div class="news-category-tag geopolitics">🌍 國際政經</div>
+        <h4 class="news-card-title">美國商務部擴大對中國半導體設備管制,涵蓋 EUV 維修零件</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">美國商務部工業安全局 (BIS) 於本週宣布新版出口管制清單,首次將極紫外光微影設備 (EUV Lithography) 維修用之高精度零件納入限制範圍。</p>
+          <div class="news-card-importance">美中科技脫鉤 (decoupling) 持續深化,台灣作為半導體供應鏈核心節點,在地緣政治博弈中的戰略價值將進一步提升。</div>
+          <div class="news-card-sources">
+            <a href="https://www.ft.com/" class="news-card-source" target="_blank">📄 Financial Times · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-21</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="geopolitics">
+        <div class="news-category-tag geopolitics">🌍 國際政經</div>
+        <h4 class="news-card-title">歐盟 AI 法案 (EU AI Act) 第二階段生效,通用模型受嚴格規範</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">歐盟 AI 法案 5 月 20 日進入第二階段執行,所有部署於歐洲的通用 AI 模型 (GPAI) 都必須完成風險評估、提供技術文件。</p>
+          <div class="news-card-importance">歐盟 AI 法規為全球設立合規標準 (Brussels Effect),台灣企業若有歐洲業務必須及早因應。</div>
+          <div class="news-card-sources">
+            <a href="https://www.reuters.com/" class="news-card-source" target="_blank">📄 Reuters · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-20</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="policy">
+        <div class="news-category-tag policy">📜 政策法規</div>
+        <h4 class="news-card-title">數位部公告《AI 基本法》施行細則草案,企業 AI 應用須揭露訓練資料來源</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">數位發展部 5 月 20 日公告《人工智慧基本法》施行細則草案,要求公部門及上市櫃企業於部署生成式 AI 系統時,須揭露訓練資料來源類別。</p>
+          <div class="news-card-importance">AI 治理 (AI Governance) 法規化將成為企業導入 AI 的新門檻,資管專業人員須具備技術與合規雙重視角。</div>
+          <div class="news-card-sources">
+            <a href="https://moda.gov.tw/" class="news-card-source" target="_blank">📄 數位發展部 · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-20</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="policy">
+        <div class="news-category-tag policy">📜 政策法規</div>
+        <h4 class="news-card-title">個資保護委員會 8 月正式掛牌,跨部會統一個資稽核</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">行政院確認個人資料保護委員會將於 8 月 1 日正式成立,統一管理過去分散於各部會的個資稽核業務。</p>
+          <div class="news-card-importance">台灣個資保護組織架構升級,對企業合規成本與隱私工程 (Privacy Engineering) 需求都會帶來顯著變化。</div>
+          <div class="news-card-sources">
+            <a href="https://www.cna.com.tw/" class="news-card-source" target="_blank">📄 中央社 · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-18</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="industry">
+        <div class="news-category-tag industry">🚀 產業趨勢</div>
+        <h4 class="news-card-title">Gartner 預測 2027 年企業生成式 AI 應用滲透率將達 80%</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">研究機構 Gartner 最新報告指出,2026 年全球企業生成式 AI 應用滲透率為 45%,預估 2027 年將達 80%。</p>
+          <div class="news-card-importance">資料治理 (Data Governance) 與 AI 專案管理是企業 AI 落地關鍵,亦為資管領域研究的高需求題目。</div>
+          <div class="news-card-sources">
+            <a href="https://www.gartner.com/" class="news-card-source" target="_blank">📄 Gartner · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-20</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+      <article class="news-card" data-category="industry">
+        <div class="news-category-tag industry">🚀 產業趨勢</div>
+        <h4 class="news-card-title">IDC:亞太區雲端原生 (Cloud Native) 市場 2026 年將達 480 億美元</h4>
+        <div class="news-card-body">
+          <p class="news-card-summary">IDC 報告指出,2026 年亞太區雲端原生服務市場規模將達 480 億美元,年增 32%。Kubernetes、Service Mesh、Serverless 等技術需求最為強勁。</p>
+          <div class="news-card-importance">雲端原生架構是企業數位轉型核心,相關人才薪資已超越傳統軟體開發 30% 以上。</div>
+          <div class="news-card-sources">
+            <a href="https://www.idc.com/" class="news-card-source" target="_blank">📄 IDC · 看原文 ↗</a>
+          </div>
+        </div>
+        <div class="news-card-meta">
+          <span>2026-05-19</span>
+          <span class="news-card-expand">點擊展開 ↓</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 頁尾 ============ -->
+  <footer class="footer">
+    <div class="footer-ornament">❦</div>
+    <div class="footer-text">願今日有所得 · 2026-05-22</div>
+    <div style="font-size: 11px; opacity: 0.7; margin-top: 8px;">Powered by Claude Cowork</div>
+  </footer>
+
+</div>
+
+<!-- ============ 歷史紀錄按鈕(浮動) ============ -->
+<button class="history-toggle" onclick="openHistory()">
+  📅 歷史紀錄
+</button>
+
+<!-- ============ 歷史紀錄面板 ============ -->
+<div class="history-panel" id="history-panel">
+  <div class="history-header">
+    <h2 class="history-title">📅 歷史紀錄</h2>
+    <button class="history-close" onclick="closeHistory()">×</button>
+  </div>
+
+  <div class="history-stats">
+    <div class="history-stats-title">最近 30 天統計</div>
+    <div class="history-stats-grid">
+      <div class="history-stat">
+        <div class="history-stat-value" id="stat-days">0</div>
+        <div class="history-stat-label">紀錄天數</div>
+      </div>
+      <div class="history-stat">
+        <div class="history-stat-value" id="stat-avg">0%</div>
+        <div class="history-stat-label">平均完成率</div>
+      </div>
+      <div class="history-stat">
+        <div class="history-stat-value" id="stat-streak">0</div>
+        <div class="history-stat-label">連續達標</div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="history-list" id="history-list"></ul>
+</div>
+
+<!-- ============ 新增任務 Modal ============ -->
+<div class="modal-backdrop" id="task-modal">
+  <div class="modal">
+    <h3 class="modal-title">新增任務</h3>
+    <div class="modal-field">
+      <label class="modal-label">任務名稱</label>
+      <input type="text" class="modal-input" id="task-input-title" placeholder="例:寫論文文獻回顧">
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">說明(選填)</label>
+      <input type="text" class="modal-input" id="task-input-desc" placeholder="例:整理 3 篇相關文獻">
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">優先級</label>
+      <select class="modal-select" id="task-input-priority">
+        <option value="high">高優先</option>
+        <option value="mid" selected>中優先</option>
+        <option value="low">低優先</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('task-modal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" onclick="confirmAddTask()">新增</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 新增股票 Modal ============ -->
+<div class="modal-backdrop" id="stock-modal">
+  <div class="modal">
+    <h3 class="modal-title" id="stock-modal-title">新增股票</h3>
+    <div class="modal-field">
+      <label class="modal-label">股票代號</label>
+      <input type="text" class="modal-input" id="stock-input-code" placeholder="例:2330">
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">股票名稱</label>
+      <input type="text" class="modal-input" id="stock-input-name" placeholder="例:台積電">
+    </div>
+    <div style="font-size: 12px; color: var(--ink-fade); margin-top: 8px; line-height: 1.6;">
+      💡 提示:股價與歷史高低點會在隔天 Cowork 排程自動更新。
+      點擊卡片右上角 ↗ 也可隨時到 Yahoo 股市查詢即時資料。
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" onclick="closeModal('stock-modal')">取消</button>
+      <button class="modal-btn modal-btn-confirm" onclick="confirmAddStock()">新增</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TODAY_KEY = '2026-05-22';
+  const STORAGE_KEY = 'morning-brief-' + TODAY_KEY;
+
+  function loadState() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : { todos: {}, water: 0, priority: '' };
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  let state = loadState();
+
+  // ========== 市場分頁 ==========
+  document.querySelectorAll('.market-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.market-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ========== 股票卡片展開 ==========
+  document.querySelectorAll('.stock-card-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle.closest('.stock-card').classList.toggle('expanded');
+    });
+  });
+
+  // 點外部連結時不要觸發展開
+  document.querySelectorAll('.stock-card-link').forEach(link => {
+    link.addEventListener('click', (e) => e.stopPropagation());
+  });
+
+  // ========== 任務勾選 ==========
+  function updateProgress() {
+    const total = document.querySelectorAll('.task-item').length;
+    const done = document.querySelectorAll('.task-item.completed').length;
+    const percent = Math.round((done / total) * 100);
+    document.getElementById('task-count').textContent = done + ' / ' + total + ' 完成';
+    document.getElementById('progress-percent').textContent = percent + '%';
+    document.getElementById('progress-fill').style.width = percent + '%';
+  }
+
+  document.querySelectorAll('.task-item').forEach(item => {
+    const id = item.dataset.id;
+    if (state.todos[id]) item.classList.add('completed');
+
+    item.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') return;
+      item.classList.toggle('completed');
+      const isDone = item.classList.contains('completed');
+      state.todos[id] = isDone;
+
+      // 喝水任務的雙向同步:勾選 → 水滿,取消 → 水歸零
+      if (id === 'water') {
+        state.water = isDone ? 1500 : 0;
+        updateWaterUI();
+      }
+
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+
+  // ========== 喝水 ==========
+  function updateWaterUI() {
+    const percent = Math.min(100, (state.water / 1500) * 100);
+    document.getElementById('water-current').textContent = state.water;
+    document.getElementById('water-fill').style.width = percent + '%';
+  }
+
+  function addWater(amount) {
+    state.water = Math.min(1500, state.water + amount);
+    saveState(state);
+    updateWaterUI();
+    if (state.water >= 1500) {
+      const t = document.querySelector('[data-id="water"]');
+      if (t && !t.classList.contains('completed')) {
+        t.classList.add('completed');
+        state.todos['water'] = true;
+        saveState(state);
+        updateProgress();
+      }
+    }
+  }
+
+  function resetWater() {
+    state.water = 0;
+    // 重置時若喝水待辦已勾選,一併取消
+    const t = document.querySelector('[data-id="water"]');
+    if (t && t.classList.contains('completed')) {
+      t.classList.remove('completed');
+      state.todos['water'] = false;
+      updateProgress();
+    }
+    saveState(state);
+    updateWaterUI();
+  }
+
+  updateWaterUI();
+
+  // ========== 計時器 ==========
+  let timerSeconds = 30 * 60;
+  let timerInterval = null;
+  let timerRunning = false;
+
+  function updateTimerDisplay() {
+    const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const s = (timerSeconds % 60).toString().padStart(2, '0');
+    document.getElementById('timer-display').textContent = m + ':' + s;
+  }
+
+  function toggleTimer() {
+    const btn = document.getElementById('timer-start');
+    if (timerRunning) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      btn.textContent = '繼續';
+    } else {
+      timerInterval = setInterval(() => {
+        if (timerSeconds > 0) {
+          timerSeconds--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerRunning = false;
+          btn.textContent = '完成';
+          const t = document.querySelector('[data-id="exercise"]');
+          if (t && !t.classList.contains('completed')) {
+            t.classList.add('completed');
+            state.todos['exercise'] = true;
+            saveState(state);
+            updateProgress();
+          }
+          alert('運動 30 分鐘已完成 · 辛苦了 🎉');
+        }
+      }, 1000);
+      timerRunning = true;
+      btn.textContent = '暫停';
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerSeconds = 30 * 60;
+    updateTimerDisplay();
+    document.getElementById('timer-start').textContent = '開始';
+  }
+
+  updateTimerDisplay();
+
+  // ========== 今日重點 ==========
+  const priorityEl = document.getElementById('priority-text');
+  priorityEl.textContent = state.priority;
+  priorityEl.addEventListener('blur', () => {
+    state.priority = priorityEl.textContent;
+    saveState(state);
+  });
+
+  // ========== 新聞展開 ==========
+  document.querySelectorAll('.news-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return;
+      card.classList.toggle('expanded');
+    });
+  });
+
+  // ========== 新聞篩選 ==========
+  document.querySelectorAll('.news-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.news-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.news-card').forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ====================================================
+  // ========== v2.3 新功能:動態增減 + 歷史紀錄 ==========
+  // ====================================================
+
+  // ---------- 自訂任務管理 ----------
+  // 自訂任務存在 state.customTasks: [{id, title, desc, priority}, ...]
+  if (!state.customTasks) state.customTasks = [];
+  if (!state.deletedDefaultTasks) state.deletedDefaultTasks = [];
+
+  // 渲染所有自訂任務
+  function renderCustomTasks() {
+    // 先移除已存在的自訂任務 DOM(避免重複)
+    document.querySelectorAll('.task-item[data-custom="true"]').forEach(el => el.remove());
+
+    const list = document.getElementById('task-list');
+    state.customTasks.forEach(task => {
+      const li = document.createElement('li');
+      li.className = 'task-item';
+      li.dataset.id = task.id;
+      li.dataset.custom = 'true';
+      if (state.todos[task.id]) li.classList.add('completed');
+
+      li.innerHTML = `
+        <span class="task-checkbox"></span>
+        <div class="task-content">
+          <div class="task-title">${escapeHtml(task.title)}</div>
+          <div class="task-desc">${escapeHtml(task.desc || '')}</div>
+        </div>
+        <span class="task-priority ${task.priority}">${
+          task.priority === 'high' ? '高優先' :
+          task.priority === 'mid' ? '中優先' : '低優先'
+        }</span>
+        <button class="task-delete" title="刪除此任務">×</button>
+      `;
+      list.appendChild(li);
+
+      // 綁定勾選事件
+      li.addEventListener('click', (e) => {
+        if (e.target.classList.contains('task-delete')) return;
+        li.classList.toggle('completed');
+        state.todos[task.id] = li.classList.contains('completed');
+        saveState(state);
+        updateProgress();
+      });
+
+      // 綁定刪除事件
+      li.querySelector('.task-delete').addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteCustomTask(task.id);
+      });
+    });
+  }
+
+  // 隱藏被刪除的預設任務
+  function applyDeletedDefaultTasks() {
+    state.deletedDefaultTasks.forEach(id => {
+      const el = document.querySelector(`.task-item[data-id="${id}"]:not([data-custom])`);
+      if (el) el.style.display = 'none';
+    });
+  }
+
+  // 給預設任務也綁定刪除事件
+  document.querySelectorAll('.task-item:not([data-custom]) .task-delete').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = btn.closest('.task-item');
+      const id = item.dataset.id;
+      if (confirm(`確定要刪除「${item.querySelector('.task-title').textContent}」嗎?`)) {
+        item.style.display = 'none';
+        state.deletedDefaultTasks.push(id);
+        // 同時清掉這個任務的完成紀錄
+        delete state.todos[id];
+        saveState(state);
+        updateProgress();
+      }
+    });
+  });
+
+  function deleteCustomTask(id) {
+    state.customTasks = state.customTasks.filter(t => t.id !== id);
+    delete state.todos[id];
+    saveState(state);
+    renderCustomTasks();
+    updateProgress();
+  }
+
+  // ---------- 新增任務 Modal ----------
+  function openTaskModal() {
+    document.getElementById('task-input-title').value = '';
+    document.getElementById('task-input-desc').value = '';
+    document.getElementById('task-input-priority').value = 'mid';
+    document.getElementById('task-modal').classList.add('active');
+    setTimeout(() => document.getElementById('task-input-title').focus(), 100);
+  }
+
+  function confirmAddTask() {
+    const title = document.getElementById('task-input-title').value.trim();
+    const desc = document.getElementById('task-input-desc').value.trim();
+    const priority = document.getElementById('task-input-priority').value;
+
+    if (!title) {
+      alert('請輸入任務名稱');
+      return;
+    }
+
+    const newTask = {
+      id: 'custom-' + Date.now(),
+      title, desc, priority
+    };
+
+    state.customTasks.push(newTask);
+    saveState(state);
+    renderCustomTasks();
+    updateProgress();
+    closeModal('task-modal');
+  }
+
+  // ---------- 自訂股票管理 ----------
+  if (!state.customStocks) state.customStocks = { etf: [], stock: [] };
+
+  function renderCustomStocks() {
+    ['etf', 'stock'].forEach(type => {
+      // 先清掉已存在的自訂股票卡
+      document.querySelectorAll(`#grid-${type} .stock-card[data-custom="true"]`).forEach(el => el.remove());
+
+      const grid = document.getElementById(`grid-${type}`);
+      const addBtn = grid.querySelector('.stock-add-card');
+
+      state.customStocks[type].forEach(stock => {
+        const card = document.createElement('div');
+        card.className = 'stock-card';
+        card.dataset.custom = 'true';
+        card.innerHTML = `
+          <button class="stock-delete" title="刪除此股票" data-code="${stock.code}" data-type="${type}">×</button>
+          <a href="https://tw.stock.yahoo.com/quote/${stock.code}.TW" class="stock-card-link" target="_blank" title="到 Yahoo 股市查詢">↗</a>
+          <div class="stock-card-code">${escapeHtml(stock.code)}</div>
+          <div class="stock-card-name">${escapeHtml(stock.name)}</div>
+          <div class="stock-card-price" style="color: var(--ink-fade); font-size: 14px;">待 Cowork 更新</div>
+          <div class="stock-card-change flat" style="font-size: 11px;">明日自動填入</div>
+          <div class="stock-card-toggle">
+            <span>📊 看細部</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="stock-card-detail">
+            <div class="stock-range">
+              <div class="stock-range-label">52 週區間</div>
+              <div class="stock-range-row"><span class="tag">尚未取得資料</span></div>
+            </div>
+            <div class="stock-range">
+              <div class="stock-range-label">歷史區間</div>
+              <div class="stock-range-row"><span class="tag">尚未取得資料</span></div>
+            </div>
+          </div>
+        `;
+        grid.insertBefore(card, addBtn);
+
+        // 綁刪除
+        card.querySelector('.stock-delete').addEventListener('click', (e) => {
+          e.stopPropagation();
+          deleteCustomStock(type, stock.code);
+        });
+        // 綁展開
+        card.querySelector('.stock-card-toggle').addEventListener('click', (e) => {
+          e.stopPropagation();
+          card.classList.toggle('expanded');
+        });
+        // 連結不觸發展開
+        card.querySelector('.stock-card-link').addEventListener('click', (e) => e.stopPropagation());
+      });
+    });
+  }
+
+  // 給預設股票卡也綁刪除按鈕(動態加上去)
+  function addDeleteToDefaultStocks() {
+    document.querySelectorAll('.stock-card:not([data-custom])').forEach(card => {
+      if (card.querySelector('.stock-delete')) return; // 已有則跳過
+      const code = card.querySelector('.stock-card-code').textContent.trim();
+      const type = card.closest('#panel-etf') ? 'etf' : 'stock';
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'stock-delete';
+      delBtn.title = '隱藏此股票';
+      delBtn.textContent = '×';
+      delBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm(`確定要從畫面隱藏「${code}」嗎?(可由 Cowork 排程重新加回)`)) {
+          card.style.display = 'none';
+          if (!state.hiddenDefaultStocks) state.hiddenDefaultStocks = [];
+          state.hiddenDefaultStocks.push({ type, code });
+          saveState(state);
+        }
+      });
+      card.appendChild(delBtn);
+    });
+  }
+  addDeleteToDefaultStocks();
+
+  // 套用之前隱藏的預設股票
+  if (state.hiddenDefaultStocks) {
+    state.hiddenDefaultStocks.forEach(({ type, code }) => {
+      document.querySelectorAll(`#panel-${type} .stock-card:not([data-custom])`).forEach(card => {
+        if (card.querySelector('.stock-card-code').textContent.trim() === code) {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  function deleteCustomStock(type, code) {
+    state.customStocks[type] = state.customStocks[type].filter(s => s.code !== code);
+    saveState(state);
+    renderCustomStocks();
+  }
+
+  // ---------- 新增股票 Modal ----------
+  let stockModalType = 'etf';
+
+  function openStockModal(type) {
+    stockModalType = type;
+    document.getElementById('stock-modal-title').textContent =
+      type === 'etf' ? '新增 ETF' : '新增公司股';
+    document.getElementById('stock-input-code').value = '';
+    document.getElementById('stock-input-name').value = '';
+    document.getElementById('stock-modal').classList.add('active');
+    setTimeout(() => document.getElementById('stock-input-code').focus(), 100);
+  }
+
+  function confirmAddStock() {
+    const code = document.getElementById('stock-input-code').value.trim();
+    const name = document.getElementById('stock-input-name').value.trim();
+
+    if (!code || !name) {
+      alert('請輸入股票代號與名稱');
+      return;
+    }
+
+    // 檢查是否重複
+    const exists = state.customStocks[stockModalType].some(s => s.code === code);
+    if (exists) {
+      alert('已新增過此股票');
+      return;
+    }
+
+    state.customStocks[stockModalType].push({ code, name });
+    saveState(state);
+    renderCustomStocks();
+    closeModal('stock-modal');
+  }
+
+  // ---------- 通用 Modal 關閉 ----------
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+
+  // 點背景關閉 Modal
+  document.querySelectorAll('.modal-backdrop').forEach(bd => {
+    bd.addEventListener('click', (e) => {
+      if (e.target === bd) bd.classList.remove('active');
+    });
+  });
+
+  // Enter 鍵確認 Modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const activeModal = document.querySelector('.modal-backdrop.active');
+      if (activeModal) {
+        if (activeModal.id === 'task-modal') confirmAddTask();
+        else if (activeModal.id === 'stock-modal') confirmAddStock();
+      }
+    } else if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop.active').forEach(m => m.classList.remove('active'));
+      closeHistory();
+    }
+  });
+
+  // ---------- 歷史紀錄 ----------
+  function openHistory() {
+    renderHistory();
+    document.getElementById('history-panel').classList.add('active');
+  }
+
+  function closeHistory() {
+    document.getElementById('history-panel').classList.remove('active');
+  }
+
+  function getAllHistory() {
+    // 撈出所有 localStorage 裡 morning-brief-* 的 key
+    const records = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('morning-brief-')) {
+        const date = key.replace('morning-brief-', '');
+        try {
+          const data = JSON.parse(localStorage.getItem(key));
+          const todos = data.todos || {};
+          const total = Object.keys(todos).length;
+          const done = Object.values(todos).filter(v => v).length;
+          records.push({ date, total, done, data });
+        } catch (e) {}
+      }
+    }
+    records.sort((a, b) => b.date.localeCompare(a.date));
+    return records;
+  }
+
+  function renderHistory() {
+    const records = getAllHistory().slice(0, 30); // 最近 30 天
+    const list = document.getElementById('history-list');
+
+    // 計算統計
+    const days = records.length;
+    const avgRate = days > 0
+      ? Math.round(records.reduce((sum, r) => sum + (r.total ? r.done / r.total : 0), 0) / days * 100)
+      : 0;
+
+    let streak = 0;
+    for (const r of records) {
+      if (r.total > 0 && r.done / r.total >= 0.8) streak++;
+      else break;
+    }
+
+    document.getElementById('stat-days').textContent = days;
+    document.getElementById('stat-avg').textContent = avgRate + '%';
+    document.getElementById('stat-streak').textContent = streak;
+
+    // 渲染列表
+    if (records.length === 0) {
+      list.innerHTML = '<div class="history-empty">尚無歷史紀錄<br>明天再來看看吧</div>';
+      return;
+    }
+
+    list.innerHTML = records.map(r => {
+      const rate = r.total > 0 ? Math.round(r.done / r.total * 100) : 0;
+      const rateClass = rate >= 80 ? 'high' : rate >= 50 ? 'mid' : 'low';
+      const d = new Date(r.date);
+      const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+      const wd = isNaN(d) ? '' : '周' + weekdays[d.getDay()];
+
+      return `
+        <li class="history-day" onclick="window.location.href='${r.date}-早晨.html'">
+          <div class="history-day-header">
+            <div>
+              <span class="history-day-date">${r.date}</span>
+              <span class="history-day-weekday">${wd}</span>
+            </div>
+            <span class="history-day-rate ${rateClass}">${r.done}/${r.total} · ${rate}%</span>
+          </div>
+          <div class="history-day-bar">
+            <div class="history-day-fill" style="width: ${rate}%"></div>
+          </div>
+        </li>
+      `;
+    }).join('');
+  }
+
+  // ---------- 工具函式 ----------
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ---------- 初始化 ----------
+  applyDeletedDefaultTasks();
+  renderCustomTasks();
+  renderCustomStocks();
+  updateProgress();
+</script>
+
+</body>
+</html>
